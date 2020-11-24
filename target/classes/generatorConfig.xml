@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--你的数据库驱动位置-->
+    <classPathEntry
+            location="E:\Maven\apache-maven-3.3.9\repository\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar"/>
+
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+        <!--不生成注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://120.27.242.143:3306/crm?serverTimezone=GMT"
+                        userId="root"
+                        password="Ahao123.."/>
+
+        <!-- 指定javaBean生成的位置 -->
+        <javaModelGenerator targetPackage="com.brianyi.domain" targetProject="src/main/java">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.brianyi.mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 指定dao接口生成的位置，mapper接口 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.brianyi.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- table表生成对应的DomainObject -->
+        <table tableName="business" domainObjectName="Business"/>
+        <table tableName="client" domainObjectName="Client"/>
+        <table tableName="contract" domainObjectName="Contract"/>
+        <table tableName="department_one" domainObjectName="DepartmentOne"/>
+        <table tableName="department_two" domainObjectName="DepartmentTwo"/>
+        <table tableName="department_three" domainObjectName="DepartmentThree"/>
+        <table tableName="enterprise" domainObjectName="Enterprise"/>
+        <table tableName="message" domainObjectName="Message"/>
+        <table tableName="permission" domainObjectName="Permission"/>
+        <table tableName="product" domainObjectName="Product"/>
+        <table tableName="roles" domainObjectName="Roles"/>
+        <table tableName="sysuser" domainObjectName="SysUser"/>
+    </context>
+
+</generatorConfiguration>
+
