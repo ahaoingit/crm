@@ -40,14 +40,13 @@
         <table tableName="business" domainObjectName="Business"/>
         <table tableName="client" domainObjectName="Client"/>
         <table tableName="contract" domainObjectName="Contract"/>
-        <table tableName="department_one" domainObjectName="DepartmentOne"/>
-        <table tableName="department_two" domainObjectName="DepartmentTwo"/>
-        <table tableName="department_three" domainObjectName="DepartmentThree"/>
+        <table tableName="department" domainObjectName="DepartmentOne"/>
         <table tableName="enterprise" domainObjectName="Enterprise"/>
         <table tableName="message" domainObjectName="Message"/>
-        <table tableName="permission" domainObjectName="Permission"/>
         <table tableName="product" domainObjectName="Product"/>
-        <table tableName="roles" domainObjectName="Roles"/>
+        <table tableName="role" domainObjectName="Role"/>
+        <table tableName="sys_backend_api" domainObjectName="SysBackendApi"/>
+        <table tableName="sys_frontend_menu" domainObjectName="SysFrontendMenu"/>
         <table tableName="sysuser" domainObjectName="SysUser"/>
     </context>
 

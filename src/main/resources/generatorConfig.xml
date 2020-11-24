@@ -11,7 +11,7 @@
     <context id="mysqlgenerator" targetRuntime="MyBatis3">
         <!--不生成注释-->
         <commentGenerator>
-            <property name="suppressAllComments" value="false"/>
+            <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- 配置数据库连接 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
@@ -44,10 +44,10 @@
         <table tableName="enterprise" domainObjectName="Enterprise"/>
         <table tableName="message" domainObjectName="Message"/>
         <table tableName="product" domainObjectName="Product"/>
-        <table tableName="roles" domainObjectName="Roles"/>
+        <table tableName="role" domainObjectName="Role"/>
         <table tableName="sys_backend_api" domainObjectName="SysBackendApi"/>
         <table tableName="sys_frontend_menu" domainObjectName="SysFrontendMenu"/>
-        <table tableName="sysuser" domainObjectName="SysUser"/>
+        <table tableName="sys_user" domainObjectName="SysUser"/>
     </context>
 
 </generatorConfiguration>

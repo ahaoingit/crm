@@ -83,6 +83,7 @@
             <artifactId>mybatis</artifactId>
             <version>${mybatisVersion}</version>
         </dependency>
+
         <!--spring-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -141,6 +142,12 @@
             <version>1.1.0.Final</version>
         </dependency>
         <!-- swagger-mvc -->
+<!--        JSON-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.73</version>
+        </dependency>
     </dependencies>
 
 
