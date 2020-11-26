@@ -1,16 +1,21 @@
 package com.brianyi.controller;
 
-import com.brianyi.domain.Roles;
-import com.brianyi.mapper.RolesMapper;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.alibaba.fastjson.JSON;
+
+
+import com.brianyi.domain.Result;
+import com.brianyi.domain.SysUser;
+import com.brianyi.domain.SysUserExample;
+import com.brianyi.mapper.SysUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.management.relation.Role;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * TODO
@@ -18,18 +23,29 @@ import java.util.Date;
  * @author ahao 2020-11-23
  */
 @RestController
-//@Api
 public class SysUserController {
     @Autowired
-    RolesMapper rolesMapper;
-    @RequestMapping("/print")
-//    @ApiOperation(value = "test")
-    public String print() {
-        Roles roles =new Roles();
-        roles.setrCreateTime(new Date());
-        roles.setRemarks("test");
-        roles.setRname("管理元");
-        return rolesMapper.insert(roles)+"";
-    }
+    SysUserMapper sysUserMapper;
+        @RequestMapping("/showAllSysUsers")
+
+        public @ResponseBody Map<String,Object>  findAllSysUsers(){
+            SysUserExample sysUserExample = new SysUserExample();
+
+            SysUserExample.Criteria criteria = sysUserExample.createCriteria();
+//            criteria.andSysUserNameEqualTo("小明");
+            criteria.andSysUserIdIsNotNull();
+            List<SysUser> sysUsers = sysUserMapper.selectByExample(sysUserExample);
+            int count = sysUsers.size();
+            sysUsers.forEach(sysUser -> System.out.println(sysUser.getSysUserName()));
+//            return JSON.toJSONString(sysUsers);
+            Map<String,Object> map = new HashMap<>();
+            map.put("msg",null);
+            map.put("code",0);
+            map.put("count",count);
+            map.put("data",sysUsers);
+            System.out.println(map);
+            return map;
+
+        }
 
 }
