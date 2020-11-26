@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brainyi.mapper.SysBackendApiMapper">
+  <resultMap id="BaseResultMap" type="com.brainyi.domain.SysBackendApi">
+    <result column="backend_api_id" jdbcType="VARCHAR" property="backendApiId" />
+    <result column="backend_api_name" jdbcType="VARCHAR" property="backendApiName" />
+    <result column="backend_api_method" jdbcType="VARCHAR" property="backendApiMethod" />
+    <result column="backend_api_url" jdbcType="VARCHAR" property="backendApiUrl" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="backend_api_sort" jdbcType="INTEGER" property="backendApiSort" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    backend_api_id, backend_api_name, backend_api_method, backend_api_url, pid, backend_api_sort, 
+    description
+  </sql>
+  <select id="selectByExample" parameterType="com.brainyi.domain.SysBackendApiExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_backend_api
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.brainyi.domain.SysBackendApiExample">
+    delete from sys_backend_api
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.brainyi.domain.SysBackendApi">
+    insert into sys_backend_api (backend_api_id, backend_api_name, backend_api_method, 
+      backend_api_url, pid, backend_api_sort, 
+      description)
+    values (#{backendApiId,jdbcType=VARCHAR}, #{backendApiName,jdbcType=VARCHAR}, #{backendApiMethod,jdbcType=VARCHAR}, 
+      #{backendApiUrl,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{backendApiSort,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brainyi.domain.SysBackendApi">
+    insert into sys_backend_api
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="backendApiId != null">
+        backend_api_id,
+      </if>
+      <if test="backendApiName != null">
+        backend_api_name,
+      </if>
+      <if test="backendApiMethod != null">
+        backend_api_method,
+      </if>
+      <if test="backendApiUrl != null">
+        backend_api_url,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="backendApiSort != null">
+        backend_api_sort,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="backendApiId != null">
+        #{backendApiId,jdbcType=VARCHAR},
+      </if>
+      <if test="backendApiName != null">
+        #{backendApiName,jdbcType=VARCHAR},
+      </if>
+      <if test="backendApiMethod != null">
+        #{backendApiMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="backendApiUrl != null">
+        #{backendApiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="backendApiSort != null">
+        #{backendApiSort,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.brainyi.domain.SysBackendApiExample" resultType="java.lang.Long">
+    select count(*) from sys_backend_api
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_backend_api
+    <set>
+      <if test="record.backendApiId != null">
+        backend_api_id = #{record.backendApiId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backendApiName != null">
+        backend_api_name = #{record.backendApiName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backendApiMethod != null">
+        backend_api_method = #{record.backendApiMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backendApiUrl != null">
+        backend_api_url = #{record.backendApiUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backendApiSort != null">
+        backend_api_sort = #{record.backendApiSort,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_backend_api
+    set backend_api_id = #{record.backendApiId,jdbcType=VARCHAR},
+      backend_api_name = #{record.backendApiName,jdbcType=VARCHAR},
+      backend_api_method = #{record.backendApiMethod,jdbcType=VARCHAR},
+      backend_api_url = #{record.backendApiUrl,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      backend_api_sort = #{record.backendApiSort,jdbcType=INTEGER},
+      description = #{record.description,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

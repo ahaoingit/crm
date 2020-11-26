@@ -2,12 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="com.brianyi"/>
+    <context:component-scan base-package="com.brainyi"/>
     <!--持久层配置 开始-->
     <!--引入数据库外部属性文件-->
     <context:property-placeholder location="classpath:db.properties"/>
@@ -33,7 +34,34 @@
     <!--扫描dao层接口的包， 创建动态代理对象, 存入到spring容器中-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--需要指定dao层接口的包名-->
-        <property name="basePackage" value="com.brianyi.mapper"/>
+        <property name="basePackage" value="com.brainyi.mapper"/>
     </bean>
     <!--持久层配置结束-->
+<!--开启AOP-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--业务层配置开始-->
+    <!--声明式事务-->
+    <!--1. 事务管理类对象-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入：数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--2. 事务增强对象-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--该类方法只读的事务， 如果有事务，加入事务执行，如果没有事务，非事务执行-->
+            <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="query*" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="select*" read-only="true" propagation="SUPPORTS"/>
+            <!--其他方法：非只读事务，如果没有事务，创建一个事务，如果有事务，加入事务执行-->
+            <tx:method name="*" read-only="false" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--3.aop配置：切面配置-->
+    <aop:config>
+        <!--切面配置-->
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.brainyi.service.*.*(..))"/>
+    </aop:config>
+    <!--业务层配置结束-->
 </beans>

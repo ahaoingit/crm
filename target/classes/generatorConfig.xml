@@ -11,7 +11,7 @@
     <context id="mysqlgenerator" targetRuntime="MyBatis3">
         <!--不生成注释-->
         <commentGenerator>
-            <property name="suppressAllComments" value="false"/>
+            <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- 配置数据库连接 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
@@ -20,7 +20,7 @@
                         password="Ahao123.."/>
 
         <!-- 指定javaBean生成的位置 -->
-        <javaModelGenerator targetPackage="com.brianyi.domain" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.brainyi.domain" targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="true"/>
             <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
@@ -28,26 +28,30 @@
         </javaModelGenerator>
 
         <!--指定sql映射文件生成的位置 -->
-        <sqlMapGenerator targetPackage="com.brianyi.mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="com.brainyi.mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 指定dao接口生成的位置，mapper接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.brianyi.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.brainyi.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- table表生成对应的DomainObject -->
-        <table tableName="business" domainObjectName="Business"/>
-        <table tableName="client" domainObjectName="Client"/>
-        <table tableName="contract" domainObjectName="Contract"/>
-        <table tableName="department" domainObjectName="DepartmentOne"/>
-        <table tableName="enterprise" domainObjectName="Enterprise"/>
-        <table tableName="message" domainObjectName="Message"/>
-        <table tableName="product" domainObjectName="Product"/>
-        <table tableName="role" domainObjectName="Role"/>
-        <table tableName="sys_backend_api" domainObjectName="SysBackendApi"/>
-        <table tableName="sys_frontend_menu" domainObjectName="SysFrontendMenu"/>
-        <table tableName="sysuser" domainObjectName="SysUser"/>
+<!--        <table tableName="business" domainObjectName="Business"/>-->
+<!--        <table tableName="client" domainObjectName="Client"/>-->
+<!--        <table tableName="contract" domainObjectName="Contract"/>-->
+<!--        <table tableName="department" domainObjectName="DepartmentOne"/>-->
+<!--        <table tableName="enterprise" domainObjectName="Enterprise"/>-->
+<!--        <table tableName="message" domainObjectName="Message"/>-->
+<!--        <table tableName="product" domainObjectName="Product"/>-->
+<!--        <table tableName="role" domainObjectName="Role"/>-->
+<!--        <table tableName="sys_backend_api" domainObjectName="SysBackendApi"/>-->
+<!--        <table tableName="sys_frontend_menu" domainObjectName="SysFrontendMenu"/>-->
+<!--        <table tableName="sys_user" domainObjectName="SysUser"/>-->
+        <table tableName="sys_role_backend_api" domainObjectName="SysRoleBackendApi"/>
+        <table tableName="sys_role_frontend_menu" domainObjectName="SysRoleFrontendMenu"/>
+        <table tableName="sys_user_client" domainObjectName="SysUserClient"/>
+        <table tableName="sys_user_role" domainObjectName="SysUserRole"/>
     </context>
 
 </generatorConfiguration>
