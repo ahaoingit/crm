@@ -39,7 +39,6 @@ public class ClientController {
     }
     @RequestMapping(value = "/addClientOfPublic")
     public String addClientOfPublic(@RequestBody Client client) {
-        System.out.println(client);
         return JSON.toJSONString(clientService.insertClientForPublic(client));
     }
 }
