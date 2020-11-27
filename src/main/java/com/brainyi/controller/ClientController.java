@@ -37,8 +37,20 @@ public class ClientController {
     public String showClientOfPrivate(@RequestParam(value = "userId") String userId){
        return JSON.toJSONString(clientService.selectAllClientOfPrivateForUser(userId));
     }
+
+    /**
+     * 添加公海客户
+     * @param client
+     * @return
+     */
     @RequestMapping(value = "/addClientOfPublic")
     public String addClientOfPublic(@RequestBody Client client) {
         return JSON.toJSONString(clientService.insertClientForPublic(client));
     }
+
+    @RequestMapping("/findClientOfPublicForPage")
+    public String findClientOfPublicForPage(@RequestParam("page") Integer page ,@RequestParam("limit") Integer pageSize){
+        return JSON.toJSONString(clientService.findClientOfPublicForPage(page,pageSize));
+    }
+
 }

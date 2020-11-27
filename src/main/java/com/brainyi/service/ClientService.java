@@ -1,9 +1,8 @@
 package com.brainyi.service;
 
-import com.brainyi.domain.Client;
-import com.brainyi.domain.Result;
-import com.brainyi.domain.SysUser;
+import com.brainyi.domain.*;
 import com.brainyi.mapper.ClientMapper;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,6 +72,29 @@ public class ClientService {
         }
         result.setCode(Result.SUCCESS);
         return result;
+    }
+
+    /**
+     * 公海分页
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    public Result findClientOfPublicForPage(Integer page, Integer pageSize) {
+        //构建返回对象
+        PageReturnData<Client> pageReturnData = new PageReturnData<>();
+        //获取公海总数 必须在开启分页之前查寻
+        int count = clientMapper.selectAllClientOfPublic().size();
+        pageReturnData.setCount(count);
+        //开启分页
+        PageHelper.startPage(page,pageSize);
+        //初始化分页数据 分页会对第一个select进行分页
+        List<Client> clients = clientMapper.selectAllClientOfPublic();
+        pageReturnData.setData(clients);
+        //初始化信息与标志
+        pageReturnData.setCode(Result.SUCCESS);
+        pageReturnData.setMessage("查询分页成功");
+        return pageReturnData;
     }
 
 }

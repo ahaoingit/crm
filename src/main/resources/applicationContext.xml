@@ -29,6 +29,19 @@
                 <property name="mapUnderscoreToCamelCase" value="true"/>
             </bean>
         </property>
+        <!-- 启用分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            reasonable=true
+                        </value>
+                    </property>
+
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!--扫描dao层接口的包， 创建动态代理对象, 存入到spring容器中-->
@@ -37,7 +50,7 @@
         <property name="basePackage" value="com.brainyi.mapper"/>
     </bean>
     <!--持久层配置结束-->
-<!--开启AOP-->
+    <!--开启AOP-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!--业务层配置开始-->
     <!--声明式事务-->
