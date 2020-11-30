@@ -19,4 +19,6 @@ public interface ProductMapper {
     int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);
 
     int updateByExample(@Param("record") Product record, @Param("example") ProductExample example);
+    //   查询所有系统用户
+    List<Product> selectAllProducts();
 }

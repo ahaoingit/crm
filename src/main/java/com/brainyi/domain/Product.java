@@ -1,11 +1,13 @@
 package com.brainyi.domain;
 
+import java.util.Date;
+
 public class Product {
     private Integer pid;
 
     private String pname;
 
-    private Integer pCreateTime;
+    private Date pCreateTime;
 
     private Integer pCreatePerson;
 
@@ -25,11 +27,11 @@ public class Product {
         this.pname = pname == null ? null : pname.trim();
     }
 
-    public Integer getpCreateTime() {
+    public Date getpCreateTime() {
         return pCreateTime;
     }
 
-    public void setpCreateTime(Integer pCreateTime) {
+    public void setpCreateTime(Date pCreateTime) {
         this.pCreateTime = pCreateTime;
     }
 

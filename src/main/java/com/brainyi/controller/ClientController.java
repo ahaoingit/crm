@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * TODO
  *
@@ -48,9 +50,26 @@ public class ClientController {
         return JSON.toJSONString(clientService.insertClientForPublic(client));
     }
 
+    /**
+     * 公海分页接口
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @RequestMapping("/findClientOfPublicForPage")
     public String findClientOfPublicForPage(@RequestParam("page") Integer page ,@RequestParam("limit") Integer pageSize){
         return JSON.toJSONString(clientService.findClientOfPublicForPage(page,pageSize));
+    }
+
+    /**
+     * 公海转私海接口
+     * @param clientId
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/changeClientToPrivate")
+    public String clientPublicToPrivate(@RequestParam("clientIdList") List<Integer> clientId,@RequestParam("userID") String userId) {
+        return "";
     }
 
 }

@@ -1,5 +1,6 @@
 package com.brainyi.mapper;
 
+import com.brainyi.domain.Client;
 import com.brainyi.domain.SysUser;
 import com.brainyi.domain.SysUserExample;
 import java.util.List;
@@ -19,5 +20,8 @@ public interface SysUserMapper {
     int updateByExampleSelective(@Param("record") SysUser record, @Param("example") SysUserExample example);
 
     int updateByExample(@Param("record") SysUser record, @Param("example") SysUserExample example);
+
+//   查询所有系统用户
+    List<SysUser> selectAllSysUsers();
 
 }
