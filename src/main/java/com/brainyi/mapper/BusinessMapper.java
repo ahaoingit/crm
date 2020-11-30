@@ -19,4 +19,6 @@ public interface BusinessMapper {
     int updateByExampleSelective(@Param("record") Business record, @Param("example") BusinessExample example);
 
     int updateByExample(@Param("record") Business record, @Param("example") BusinessExample example);
+
+    List<Business> selectAllBusiness();
 }
