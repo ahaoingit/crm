@@ -3,17 +3,14 @@ package com.brainyi.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.brainyi.domain.SysUser;
-import com.brainyi.domain.SysUserExample;
 import com.brainyi.mapper.SysUserMapper;
 import com.brainyi.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 /**
  * TODO
@@ -33,9 +30,14 @@ public class SysUserController {
      */
     @RequestMapping("/showAllSysUsers")
     public String showAllSysUsers() {
-
-
         return JSON.toJSONString(sysUserService.selectAllSysUsers());
     }
+
+//    添加用户
+    @RequestMapping("/addSysUsers")
+    public String addClientOfPublic(@RequestBody SysUser sysUser) {
+        return JSON.toJSONString(sysUserService.insertSysUser(sysUser));
+    }
+
 
 }
