@@ -19,4 +19,11 @@ public interface SysUserClientMapper {
     int updateByExampleSelective(@Param("record") SysUserClient record, @Param("example") SysUserClientExample example);
 
     int updateByExample(@Param("record") SysUserClient record, @Param("example") SysUserClientExample example);
+
+    /**
+     * 公海 批量/单一  转私海
+     * @param sysUserClientList
+     * @return
+     */
+    int insertMoreOrOne(List<SysUserClient> sysUserClientList);
 }
