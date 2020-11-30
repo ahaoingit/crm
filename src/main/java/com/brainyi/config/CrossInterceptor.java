@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * TODO
- *
+ *启用拦截器 处理跨域问题
  * @author ahao 2020-11-25
  */
 public class CrossInterceptor extends HandlerInterceptorAdapter {

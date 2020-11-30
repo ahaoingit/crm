@@ -2,6 +2,7 @@ package com.brainyi.service;
 
 import com.brainyi.domain.*;
 import com.brainyi.mapper.ClientMapper;
+import com.brainyi.mapper.SysUserClientMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,8 @@ import java.util.List;
 public class ClientService {
     @Autowired
     ClientMapper clientMapper;
-
+    @Autowired
+    SysUserClientMapper sysUserClientMapper;
     public  Result insertClientForPublic(Client client) {
         int insert = clientMapper.insert(client);
         Result result = new Result();
@@ -83,7 +85,7 @@ public class ClientService {
     public Result findClientOfPublicForPage(Integer page, Integer pageSize) {
         //构建返回对象
         PageReturnData<Client> pageReturnData = new PageReturnData<>();
-        //获取公海总数 必须在开启分页之前查寻
+        //获取公海总数 必须在开启分页之前查寻 原因:开启分页后 查询语句会根据分页启用limit
         int count = clientMapper.selectAllClientOfPublic().size();
         pageReturnData.setCount(count);
         //开启分页
