@@ -19,4 +19,7 @@ public interface DepartmentOneMapper {
     int updateByExampleSelective(@Param("record") DepartmentOne record, @Param("example") DepartmentOneExample example);
 
     int updateByExample(@Param("record") DepartmentOne record, @Param("example") DepartmentOneExample example);
+
+    //   查询所有部门
+    List<DepartmentOne> selectAllDepartmentOne();
 }

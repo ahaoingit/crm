@@ -5,7 +5,7 @@ public class DepartmentOne {
 
     private String dName;
 
-    private Boolean dRank;
+    private Integer dRank;
 
     private Integer dParentId;
 
@@ -25,11 +25,11 @@ public class DepartmentOne {
         this.dName = dName == null ? null : dName.trim();
     }
 
-    public Boolean getdRank() {
+    public Integer getdRank() {
         return dRank;
     }
 
-    public void setdRank(Boolean dRank) {
+    public void setdRank(Integer dRank) {
         this.dRank = dRank;
     }
 
