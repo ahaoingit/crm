@@ -165,4 +165,15 @@
   <select id="selectAllProducts" resultType="com.brainyi.domain.Product">
     select * from product
   </select>
+
+  <!--  删除当前行产品-->
+  <delete id="deleteProduct" parameterType="int">
+    delete from product where pid = #{pid}
+  </delete>
+
+  <!--  增加新产品-->
+  <insert id="addProduct" parameterType="com.brainyi.domain.Product">
+     insert into product(pname,p_create_time,p_create_person)
+             values(#{pname},#{pCreateTime},#{pCreatePerson})
+  </insert>
 </mapper>

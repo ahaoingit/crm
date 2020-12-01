@@ -72,4 +72,17 @@ public class SysUser {
     public void setdId(Integer dId) {
         this.dId = dId;
     }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "sysUserId=" + sysUserId +
+                ", sysUserName='" + sysUserName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", joinTime=" + joinTime +
+                ", password='" + password + '\'' +
+                ", dId=" + dId +
+                '}';
+    }
 }

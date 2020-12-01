@@ -197,7 +197,19 @@
     </if>
   </update>
 
+<!--  查询用户-->
   <select id="selectAllSysUsers" resultType="com.brainyi.domain.SysUser">
     select * from sys_user
   </select>
+
+<!--  删除当前行用户-->
+  <delete id="deleteSysUser" parameterType="int">
+    delete from sys_user where sys_user_id = #{sysUserId}
+  </delete>
+
+<!--  增加用户-->
+  <insert id="addSysUser" parameterType="com.brainyi.domain.SysUser">
+     insert into sys_user(sys_user_name,phone,email,join_time,password,d_id)
+             values(#{sysUserName},#{phone},#{email},#{joinTime},#{password},#{dId})
+  </insert>
 </mapper>

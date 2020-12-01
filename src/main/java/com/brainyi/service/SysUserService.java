@@ -24,13 +24,6 @@ public class SysUserService {
      * @return
      */
     public Result selectAllSysUsers() {
-//        SysUserExample sysUserExample = new SysUserExample();
-//        SysUserExample.Criteria criteria = sysUserExample.createCriteria();
-//        criteria.andSysUserNameIsNull();
-//        List<SysUser> sysUsers = sysUserMapper.selectByExample(sysUserExample);
-//        Result result = new Result();
-//        result.setCode(Result.SUCCESS);
-//        result.setObj(sysUserMapper.selectAllSysUsers());
 
         PageReturnData<SysUser> pageReturnData = new PageReturnData<>();
         pageReturnData.setCode(Result.SUCCESS);
@@ -38,23 +31,25 @@ public class SysUserService {
         return  pageReturnData;
     }
 
-//
-public  Result insertSysUser(SysUser sysUser) {
-    int insert = sysUserMapper.insert(sysUser);
-    PageReturnData pageReturnData = new PageReturnData();
-    pageReturnData.setCode(Result.SUCCESS);
 
-    pageReturnData.setMessage("添加成功");
-    System.out.println(insert);
-    return pageReturnData;
-}
 
-    /**
-     *
-     * @return 插入结果
-     */
-    public int insertofSysUser(SysUser sysUser){
-        return  sysUserMapper.insert(sysUser);
+    //删除当前一行用户
+    public Result deleteSysUser(Integer sysUserId){
+
+        sysUserMapper.deleteSysUser(sysUserId);
+        Result result = new Result();
+        result.setCode(Result.SUCCESS);
+        result.setMessage("删除成功");
+        return result;
+    }
+
+//    增加新用户
+    public Result addSysUser(SysUser sysUser){
+        sysUserMapper.addSysUser(sysUser);
+        Result result = new Result();
+        result.setCode(Result.SUCCESS);
+        result.setMessage("添加成功");
+        return result;
     }
 
 }

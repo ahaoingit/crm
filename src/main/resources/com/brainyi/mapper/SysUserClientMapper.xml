@@ -151,8 +151,8 @@
     </if>
   </update>
 
-<!--批量转公海-->
-  <insert id="insertMoreOrOne" parameterType="">
+<!--&lt;!&ndash;批量转公海&ndash;&gt;-->
+<!--  <insert id="insertMoreOrOne" parameterType="">-->
 
-  </insert>
+<!--  </insert>-->
 </mapper>

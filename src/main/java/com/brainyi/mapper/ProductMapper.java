@@ -19,6 +19,12 @@ public interface ProductMapper {
     int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);
 
     int updateByExample(@Param("record") Product record, @Param("example") ProductExample example);
-    //   查询所有系统用户
+    //   查询所有产品
     List<Product> selectAllProducts();
+
+    //删除当前一行数据
+    Integer deleteProduct(@Param("pid") Integer pid);
+
+    //    增加新用户
+    Integer addProduct(Product product);
 }

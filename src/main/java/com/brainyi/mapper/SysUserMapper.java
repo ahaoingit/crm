@@ -24,4 +24,10 @@ public interface SysUserMapper {
 //   查询所有系统用户
     List<SysUser> selectAllSysUsers();
 
+    //删除当前一行数据
+    Integer deleteSysUser(@Param("sysUserId") Integer sysUserId);
+
+//    增加新用户
+    Integer addSysUser(SysUser sysUser);
+
 }
