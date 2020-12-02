@@ -151,8 +151,12 @@
     </if>
   </update>
 
-<!--批量转公海-->
-  <insert id="insertMoreOrOne" parameterType="">
-
+<!--批量/单一 转私海-->
+  <insert id="insertMoreOrOne">
+        insert  into sys_user_client(sys_user_id, id, client_cid)
+        values
+        <foreach collection="list" item="client" separator=",">
+          (#{client.sysUserId},null,#{client.clientCid})
+        </foreach>
   </insert>
 </mapper>
