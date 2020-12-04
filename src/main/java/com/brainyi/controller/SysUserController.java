@@ -3,11 +3,11 @@ package com.brainyi.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.brainyi.domain.SysUser;
-import com.brainyi.mapper.SysUserMapper;
 import com.brainyi.service.SysUserService;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 /**
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class SysUserController {
     @Autowired
     SysUserService sysUserService;
-    SysUserMapper sysUserMapper;
+
 
     /**
      * 系统用户查询接口
@@ -41,13 +41,33 @@ public class SysUserController {
 
     }
 
+//    批量删除
+    @RequestMapping("/deleteAll")
+    public String deleteAll(@RequestBody List<Integer> sysUserId){
+        return JSON.toJSONString(sysUserService.deleteAll(sysUserId));
+    }
+
     //增加新用户
-    @RequestMapping(value = "/addNewSysUser",method = RequestMethod.POST)
+    @RequestMapping("/addNewSysUser")
     public String addNewSysUser(@RequestBody SysUser sysUser){
-        System.out.println(111111);
+
         System.out.println(sysUser);
         return JSON.toJSONString(sysUserService.addSysUser(sysUser));
 
+    }
+
+    //修改用户信息
+    @RequestMapping("/updateSysUser")
+    public String updateSysUser(@RequestBody SysUser sysUser){
+        System.out.println(sysUser);
+        return JSON.toJSONString(sysUserService.updateByExampleSelective(sysUser));
+
+    }
+
+    //产品分页
+    @RequestMapping("/findSysUserForPage")
+    public String findSysUserForPage(@RequestParam("page") Integer page , @RequestParam("limit") Integer pageSize){
+        return JSON.toJSONString(sysUserService.findSysUserForPage(page,pageSize));
     }
 
 

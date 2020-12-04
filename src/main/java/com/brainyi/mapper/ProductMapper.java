@@ -27,4 +27,6 @@ public interface ProductMapper {
 
     //    增加新用户
     Integer addProduct(Product product);
+
+
 }

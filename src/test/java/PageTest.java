@@ -12,10 +12,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class PageTest {
     public static void main(String[] args) {
-//        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        PageHelper .startPage(1,1);
-//        ClientMapper bean = applicationContext.getBean(ClientMapper.class);
-//        //bean.selectAllClientOfPublic();
-//        System.out.println(bean.selectAllClientOfPublic().size());
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        PageHelper.startPage(1,1);
+       //ClientMapper bean = applicationContext.getBean(ClientMapper.class);
+        //bean.selectAllClientOfPublic();
+
+        ProductMapper productBean = applicationContext.getBean(ProductMapper.class);
+        productBean.selectAllProducts();
+        System.out.println(productBean.selectAllProducts().size());
     }
 }

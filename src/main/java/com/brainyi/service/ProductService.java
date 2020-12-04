@@ -1,9 +1,6 @@
 package com.brainyi.service;
 
-import com.brainyi.domain.Client;
-import com.brainyi.domain.PageReturnData;
-import com.brainyi.domain.Product;
-import com.brainyi.domain.Result;
+import com.brainyi.domain.*;
 import com.brainyi.mapper.ProductMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +12,12 @@ import java.util.List;
 public class ProductService {
     @Autowired
     ProductMapper productMapper;
-    /**
-     * 查询所有产品
-     * @return
-     */
+
+    //分页展示产品
     public Result findProductForPage(Integer page, Integer pageSize) {
         //构建返回对象
         PageReturnData<Product> pageReturnData = new PageReturnData<>();
-        //获取公海总数 必须在开启分页之前查寻 原因:开启分页后 查询语句会根据分页启用limit
+        //获取产品总数 必须在开启分页之前查寻 原因:开启分页后 查询语句会根据分页启用limit
         int count = productMapper.selectAllProducts().size();
         pageReturnData.setCount(count);
         //开启分页
@@ -63,4 +58,33 @@ public class ProductService {
         System.out.println(product);
         return result;
     }
+
+//    修改产品
+    public Result updateByExampleSelective(Product product){
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andPidEqualTo(product.getPid());
+        product.setPname(product.getPname());
+        product.setpCreateTime(product.getpCreateTime());
+        productMapper.updateByExampleSelective(product,productExample);
+        Result result = new Result();
+        result.setCode(Result.SUCCESS);
+        result.setMessage("修改成功");
+        System.out.println(product);
+        return result;
+    }
+
+    //    批量删除
+    public Result deleteAll(List<Integer> pid){
+        ProductExample productExample = new ProductExample();
+        ProductExample.Criteria criteria = productExample.createCriteria();
+        criteria.andPidIn(pid);
+        productMapper.deleteByExample(productExample);
+        Result result = new Result();
+        result.setCode(Result.SUCCESS);
+        result.setMessage("批量删除成功");
+        System.out.println(pid);
+        return result;
+    }
+
 }

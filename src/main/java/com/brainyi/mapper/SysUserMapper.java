@@ -30,4 +30,7 @@ public interface SysUserMapper {
 //    增加新用户
     Integer addSysUser(SysUser sysUser);
 
+
+
+
 }
