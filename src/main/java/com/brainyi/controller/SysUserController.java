@@ -82,12 +82,13 @@ public class SysUserController {
 
     //产品分页
     @RequestMapping("/findSysUserForPage")
-    public String findSysUserForPage(@RequestParam("page") Integer page , @RequestParam("limit") Integer pageSize){
-        return JSON.toJSONString(sysUserService.findSysUserForPage(page,pageSize));
+    public String findSysUserForPage(@RequestParam("page") Integer page , @RequestParam("limit") Integer pageSize) {
+        return JSON.toJSONString(sysUserService.findSysUserForPage(page, pageSize));
+    }
     //    添加用户
     @RequestMapping("/addSysUsers")
     public String addClientOfPublic(@RequestBody SysUser sysUser) {
-        return JSON.toJSONString(sysUserService.insertSysUser(sysUser));
+        return JSON.toJSONString(sysUserService.addSysUser(sysUser));
     }
 
     @RequestMapping("/login")
