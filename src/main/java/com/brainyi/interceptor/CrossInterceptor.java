@@ -1,4 +1,4 @@
-package com.brainyi.config;
+package com.brainyi.interceptor;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

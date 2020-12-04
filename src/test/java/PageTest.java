@@ -1,6 +1,7 @@
 import com.brainyi.domain.ClientExample;
 import com.brainyi.mapper.ClientMapper;
 import com.brainyi.mapper.SysUserMapper;
+import com.brainyi.util.RedisUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,5 +21,6 @@ public class PageTest {
         ProductMapper productBean = applicationContext.getBean(ProductMapper.class);
         productBean.selectAllProducts();
         System.out.println(productBean.selectAllProducts().size());
+
     }
 }
