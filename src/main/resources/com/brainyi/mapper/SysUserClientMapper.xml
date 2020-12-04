@@ -152,7 +152,7 @@
   </update>
 
 <!--批量转公海-->
-  <insert id="insertMoreOrOne" parameterType="">
+<!--  <insert id="insertMoreOrOne" parameterType="">-->
 
-  </insert>
+<!--  </insert>-->
 </mapper>
