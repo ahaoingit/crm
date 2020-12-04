@@ -90,4 +90,19 @@ public class Business {
     public void setSysusersysUserId(Integer sysusersysUserId) {
         this.sysusersysUserId = sysusersysUserId;
     }
+
+    @Override
+    public String toString() {
+        return "Business{" +
+                "bid=" + bid +
+                ", bName='" + bName + '\'' +
+                ", cname='" + cname + '\'' +
+                ", contactsName='" + contactsName + '\'' +
+                ", productType=" + productType +
+                ", bStage=" + bStage +
+                ", bSource=" + bSource +
+                ", clientcid=" + clientcid +
+                ", sysusersysUserId=" + sysusersysUserId +
+                '}';
+    }
 }

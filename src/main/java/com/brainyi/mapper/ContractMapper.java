@@ -19,4 +19,6 @@ public interface ContractMapper {
     int updateByExampleSelective(@Param("record") Contract record, @Param("example") ContractExample example);
 
     int updateByExample(@Param("record") Contract record, @Param("example") ContractExample example);
+
+    List<Contract> selectAllContract();
 }
