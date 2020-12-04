@@ -1,6 +1,7 @@
 package com.brainyi.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class SysUser {
     private Integer sysUserId;
@@ -16,6 +17,16 @@ public class SysUser {
     private String password;
 
     private Integer dId;
+
+    private DepartmentOne departmentOne;
+
+    public DepartmentOne getDepartmentOne() {
+        return departmentOne;
+    }
+
+    public void setDepartmentOne(DepartmentOne departmentOne) {
+        this.departmentOne = departmentOne;
+    }
 
     public Integer getSysUserId() {
         return sysUserId;
@@ -71,5 +82,19 @@ public class SysUser {
 
     public void setdId(Integer dId) {
         this.dId = dId;
+    }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "sysUserId=" + sysUserId +
+                ", sysUserName='" + sysUserName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", joinTime=" + joinTime +
+                ", password='" + password + '\'' +
+                ", dId=" + dId +
+                ", departmentOne=" + departmentOne +
+                '}';
     }
 }

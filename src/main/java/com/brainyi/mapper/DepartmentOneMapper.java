@@ -22,4 +22,8 @@ public interface DepartmentOneMapper {
 
     //   查询所有部门
     List<DepartmentOne> selectAllDepartmentOne();
+
+//    根据did查找
+    List<DepartmentOne> selectByDId(Integer did);
+
 }

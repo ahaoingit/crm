@@ -1,6 +1,7 @@
 package com.brainyi.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Product {
     private Integer pid;
@@ -10,6 +11,16 @@ public class Product {
     private Date pCreateTime;
 
     private Integer pCreatePerson;
+
+    private SysUser sysUser;
+
+    public SysUser getSysUser() {
+        return sysUser;
+    }
+
+    public void setSysUser(SysUser sysUser) {
+        this.sysUser = sysUser;
+    }
 
     public Integer getPid() {
         return pid;
@@ -41,5 +52,16 @@ public class Product {
 
     public void setpCreatePerson(Integer pCreatePerson) {
         this.pCreatePerson = pCreatePerson;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "pid=" + pid +
+                ", pname='" + pname + '\'' +
+                ", pCreateTime=" + pCreateTime +
+                ", pCreatePerson=" + pCreatePerson +
+                ", sysUser=" + sysUser +
+                '}';
     }
 }

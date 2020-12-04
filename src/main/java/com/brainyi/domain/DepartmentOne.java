@@ -1,5 +1,8 @@
 package com.brainyi.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DepartmentOne {
     private Integer did;
 
@@ -8,6 +11,16 @@ public class DepartmentOne {
     private Integer dRank;
 
     private Integer dParentId;
+
+    private List<DepartmentOne> departmentOneList;
+
+    public List<DepartmentOne> getDepartmentOneList() {
+        return departmentOneList;
+    }
+
+    public void setDepartmentOneList(List<DepartmentOne> departmentOneList) {
+        this.departmentOneList = departmentOneList;
+    }
 
     public Integer getDid() {
         return did;
@@ -39,5 +52,16 @@ public class DepartmentOne {
 
     public void setdParentId(Integer dParentId) {
         this.dParentId = dParentId;
+    }
+
+    @Override
+    public String toString() {
+        return "DepartmentOne{" +
+                "did=" + did +
+                ", dName='" + dName + '\'' +
+                ", dRank=" + dRank +
+                ", dParentId=" + dParentId +
+                ", departmentOneList=" + departmentOneList +
+                '}';
     }
 }

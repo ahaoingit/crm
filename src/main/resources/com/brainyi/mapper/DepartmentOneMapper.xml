@@ -88,12 +88,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.brainyi.domain.DepartmentOne">
-    insert into department (did, d_name, d_rank, 
-      d_parent_id)
-    values (#{did,jdbcType=INTEGER}, #{dName,jdbcType=VARCHAR}, #{dRank,jdbcType=BIT}, 
-      #{dParentId,jdbcType=INTEGER})
-  </insert>
+<!--  <insert id="insert" parameterType="com.brainyi.domain.DepartmentOne">-->
+<!--    insert into department (did, d_name, d_rank,-->
+<!--      d_parent_id)-->
+<!--    values (#{did,jdbcType=INTEGER}, #{dName,jdbcType=VARCHAR}, #{dRank,jdbcType=BIT},-->
+<!--      #{dParentId,jdbcType=INTEGER})-->
+<!--  </insert>-->
   <insert id="insertSelective" parameterType="com.brainyi.domain.DepartmentOne">
     insert into department
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -162,7 +162,41 @@
     </if>
   </update>
 
+
+<!--    自关联-->
+<!--    <resultMap id="DepartmentMap" type="com.brainyi.domain.DepartmentOne">-->
+<!--        <id column="did" property="did"></id>-->
+<!--        <result column="d_name" property="dName"></result>-->
+<!--        <result column="d_rank" property="dRank"></result>-->
+<!--        <result column="d_parent_id" property="dParentId"></result>-->
+<!--        <collection property="departmentOneList" ofType="DepartmentOne" select="selectByDId" column="did"></collection>-->
+<!--    </resultMap>-->
+
+<!--<select id="selectByDId" resultMap="DepartmentMap">-->
+<!--  select * from department where d_parent_id = #{did}-->
+<!--</select>-->
+
   <select id="selectAllDepartmentOne" resultType="com.brainyi.domain.DepartmentOne">
     select * from department
   </select>
+
+  <!--批量删除-->
+  <delete id="deleteAll" parameterType="java.util.List">
+
+    <foreach item="did" collection="list" open="(" close=")" separator=",">
+      #{did}
+    </foreach>
+  </delete>
+
+<!--  插入-->
+  <insert id="insert" useGeneratedKeys="true" parameterType="com.brainyi.domain.DepartmentOne">
+    <!-- 获取刚插入的department的自动生成的主键did；（用来插入sys_user表的d_id）-->
+    <selectKey resultType="int" keyProperty="did" order="AFTER">
+      select last_insert_id();
+    </selectKey>
+    insert into department ( d_name, d_rank,
+    d_parent_id)
+    values (#{dName,jdbcType=VARCHAR}, #{dRank,jdbcType=BIT},
+    #{dParentId,jdbcType=INTEGER})
+  </insert>
 </mapper>

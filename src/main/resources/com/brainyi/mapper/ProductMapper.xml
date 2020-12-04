@@ -162,7 +162,51 @@
     </if>
   </update>
 
-  <select id="selectAllProducts" resultType="com.brainyi.domain.Product">
-    select * from product
+
+
+  <!--  删除当前行产品-->
+  <delete id="deleteProduct" parameterType="int">
+    delete from product where pid = #{pid}
+  </delete>
+
+  <!--  增加新产品-->
+  <insert id="addProduct" parameterType="com.brainyi.domain.Product">
+     insert into product(pname,p_create_time,p_create_person)
+             values(#{pname},#{pCreateTime},#{pCreatePerson})
+  </insert>
+
+<!--product与sys_user，一对一查询，一个产品对应一个创建人-->
+  <resultMap id="productSysUserMap" type="com.brainyi.domain.Product">
+    <id property="pid" column="pid"></id>
+    <result property="pname" column="pname"></result>
+    <result property="pCreateTime" column="p_create_time"></result>
+    <result property="pCreatePerson" column="p_create_person"></result>
+
+
+    <association property="sysUser" javaType="com.brainyi.domain.SysUser">
+      <id property="sysUserId" column="sys_user_id"></id>
+      <result property="sysUserName" column="sys_user_name"></result>
+      <result property="phone" column="phone"></result>
+      <result property="email" column="email"></result>
+      <result property="joinTime" column="join_time"></result>
+      <result property="password" column="password"></result>
+      <result property="dId" column="d_id"></result>
+    </association>
+  </resultMap>
+
+<!-- 一对一查询-->
+  <select id="selectAllProducts" resultMap="productSysUserMap">
+      select p.pid, p.pname,p.p_create_time,s.sys_user_name
+      from product p,sys_user s
+      where p.p_create_person = s.sys_user_id
   </select>
+
+  <!--批量删除-->
+  <delete id="deleteAll" parameterType="java.util.List">
+
+    <foreach item="pid" collection="list" open="(" close=")" separator=",">
+      #{pid}
+    </foreach>
+  </delete>
+
 </mapper>
