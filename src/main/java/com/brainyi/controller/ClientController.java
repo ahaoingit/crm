@@ -27,6 +27,7 @@ public class ClientController {
      */
     @RequestMapping("/showAllClientOfPublic")
     public String showAllClientOfPublic() {
+        System.out.println("123");
         return JSON.toJSONString(clientService.selectAllClientOfPublic());
     }
 

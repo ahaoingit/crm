@@ -23,7 +23,16 @@ public interface SysUserClientMapper {
     /**
      * 公海 批量/单一  转私海
      * @param sysUserClientList
+     * @param sysUserId
      * @return
      */
-    int insertMoreOrOne(List<SysUserClient> sysUserClientList);
+    int insertMoreOrOne(@Param("sysUserClientList") List<SysUserClient> sysUserClientList,@Param("sysUserId") String sysUserId);
+
+    /**
+     * 私海 批量/单一 转公海
+     * @param sysUserClientList
+     * @param sysUserId
+     * @return
+     */
+    int deleteMoreOrOne(@Param("sysUserClientList") List<SysUserClient> sysUserClientList,@Param("sysUserId") String sysUserId);
 }

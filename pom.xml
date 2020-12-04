@@ -182,6 +182,27 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.11.3</version>
         </dependency>
+
+        <!-- 配置redis缓存 -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.8.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!-- 配置redis结束 -->
+        <!--鉴权配置开始-->
+            <!--jwt配置-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.11.0</version>
+        </dependency>
+        <!--鉴权配置结束-->
     </dependencies>
 
 
