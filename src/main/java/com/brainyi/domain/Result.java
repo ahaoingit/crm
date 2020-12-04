@@ -4,7 +4,12 @@ public class Result {
     //状态码
     public static final  int SUCCESS = 1;
     public static final int FAILS = 0;
-
+    //token 为空
+    public static final int TOKENISNULL=3;
+    //token 违法验证失败
+    public static final int TOKENVERIFYFAILD=4;
+    //键失效
+    public static final int TOKENTIMEOUT=5;
     private int code;
     private String message;
     private Object obj;

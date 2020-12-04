@@ -5,6 +5,7 @@ import com.brainyi.domain.SysUserClient;
 import com.brainyi.mapper.SysUserClientMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -22,8 +23,19 @@ public class SysUserClientservice {
      * @param sysUserClients
      * @return
      */
-    public Result insertMoreClientToPrivateArea(List<SysUserClient> sysUserClients) {
-        sysUserClientMapper.insertMoreOrOne(sysUserClients);
-        return new Result(Result.SUCCESS,"插入成功");
+    public Result insertMoreClientToPrivateArea(List<SysUserClient> sysUserClients , String sysUserId) {
+        sysUserClientMapper.insertMoreOrOne(sysUserClients,sysUserId);
+        return new Result(Result.SUCCESS,"转入成功");
+    }
+
+    /**
+     * 私海转公海 删除 中间表数据
+     * @param sysUserClients
+     * @param sysUserId
+     * @return
+     */
+    public Result deleteClientOfPrivate(List<SysUserClient> sysUserClients , String sysUserId) {
+        sysUserClientMapper.deleteMoreOrOne(sysUserClients,sysUserId);
+        return new Result(Result.SUCCESS,"转出成功");
     }
 }

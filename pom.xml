@@ -195,6 +195,14 @@
             <version>2.9.0</version>
         </dependency>
         <!-- 配置redis结束 -->
+        <!--鉴权配置开始-->
+            <!--jwt配置-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.11.0</version>
+        </dependency>
+        <!--鉴权配置结束-->
     </dependencies>
 
 

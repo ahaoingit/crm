@@ -11,7 +11,7 @@
     <context:component-scan base-package="com.brainyi"/>
     <!--持久层配置 开始-->
     <!--引入数据库外部属性文件-->
-    <context:property-placeholder location="classpath:db.properties,redis.properties"/>
+    <context:property-placeholder location="classpath:db.properties,classpath:redis.properties"/>
 
     <!--创建数据源对象-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -79,8 +79,6 @@
     <!--业务层配置结束-->
 
 <!--配置redis-->
-<!--引入redis配置-->
-<!--    <context:property-placeholder location="classpath:redis.properties"/>-->
 <!--配置连接池-->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}"/>
