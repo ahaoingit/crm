@@ -1,5 +1,6 @@
 import com.brainyi.domain.ClientExample;
 import com.brainyi.mapper.ClientMapper;
+import com.brainyi.mapper.ProductMapper;
 import com.brainyi.mapper.SysUserMapper;
 import com.brainyi.util.RedisUtil;
 import com.github.pagehelper.PageHelper;
