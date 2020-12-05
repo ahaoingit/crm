@@ -10,3 +10,13 @@ WARN:Exception encountered during context initialization - cancelling refresh at
 WARN:Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'poolConfig' defined in class path resource [applicationContext.xml]: Could not resolve placeholder 'redis.maxIdle' in value "${redis.maxIdle}"; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.maxIdle' in value "${redis.maxIdle}"
 2020-12-01 22:34:09 下午 [Thread: main][ Class:org.springframework.context.support.ClassPathXmlApplicationContext >> Method: org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:557) ]
 WARN:Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'dataSource' defined in class path resource [applicationContext.xml]: Could not resolve placeholder 'jdbc.driver' in value "${jdbc.driver}"; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'jdbc.driver' in value "${jdbc.driver}"
+2020-12-05 15:18:22 下午 [Thread: main][ Class:com.alibaba.druid.pool.DruidDataSource >> Method: com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:1003) ]
+INFO:{dataSource-1} inited
+2020-12-05 16:13:13 下午 [Thread: main][ Class:com.alibaba.druid.pool.DruidDataSource >> Method: com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:1003) ]
+INFO:{dataSource-1} inited
+2020-12-05 16:15:55 下午 [Thread: main][ Class:com.alibaba.druid.pool.DruidDataSource >> Method: com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:1003) ]
+INFO:{dataSource-1} inited
+2020-12-05 16:18:26 下午 [Thread: main][ Class:com.alibaba.druid.pool.DruidDataSource >> Method: com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:1003) ]
+INFO:{dataSource-1} inited
+2020-12-05 16:25:22 下午 [Thread: main][ Class:com.alibaba.druid.pool.DruidDataSource >> Method: com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:1003) ]
+INFO:{dataSource-1} inited
