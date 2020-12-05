@@ -23,6 +23,7 @@ public class ClientService {
     SysUserClientMapper sysUserClientMapper;
     public  Result insertClientForPublic(Client client) {
         int insert = clientMapper.insert(client);
+
         Result result = new Result();
         result.setCode(Result.SUCCESS);
         result.setMessage("添加成功");
