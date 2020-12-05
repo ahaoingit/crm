@@ -232,7 +232,20 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <select id="selectAllContract" resultMap="BaseResultMap">
-    select * from contract co,client cl,sysuser sy where co.clientcid=cl.cid and co.sysusersys_user_id=sy.sys_user_id;
-  </select>
+
+  <resultMap id="contractClientMap" type="com.brainyi.domain.Contract">
+    <id property="id" column="id"/>
+    <result property="contractId" column="contract_id"/>
+    <result property="contractDate" column="contract_date" jdbcType="TIMESTAMP"/>
+    <result property="invoicingFlag" column="invoicing_flag"/>
+    <result property="notes" column="notes"/>
+    <result property="client.cname" column="cname"/>
+    <result property="client.contactsName" column="contacts_name"/>
+    <result property="sysUserId" column="sys_user_id"/>
+  </resultMap>
+<select id="selectAllContract" resultMap="contractClientMap">
+select co.contract_id,cl.cname,cl.contacts_name,co.contract_date,co.invoicing_flag,sy.sys_user_name,co.notes from contract co inner join client cl on co.clientcid=cl.cid inner join sys_user sy on co.sysusersys_user_id=sy.sys_user_id
+</select>
+
+
 </mapper>
