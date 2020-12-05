@@ -23,6 +23,9 @@ public class Contract {
 
     private Integer sysusersysUserId;
 
+    private  SysUser sysUser;
+    private Client client;
+
     public String getContractId() {
         return contractId;
     }
@@ -101,6 +104,22 @@ public class Contract {
 
     public void setSysusersysUserId(Integer sysusersysUserId) {
         this.sysusersysUserId = sysusersysUserId;
+    }
+
+    public SysUser getSysUser() {
+        return sysUser;
+    }
+
+    public void setSysUser(SysUser sysUser) {
+        this.sysUser = sysUser;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
