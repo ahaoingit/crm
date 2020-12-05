@@ -102,4 +102,20 @@ public class Contract {
     public void setSysusersysUserId(Integer sysusersysUserId) {
         this.sysusersysUserId = sysusersysUserId;
     }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "contractId='" + contractId + '\'' +
+                ", cname='" + cname + '\'' +
+                ", signer='" + signer + '\'' +
+                ", contractDate=" + contractDate +
+                ", invoicingFlag=" + invoicingFlag +
+                ", orderClerck='" + orderClerck + '\'' +
+                ", notes='" + notes + '\'' +
+                ", contractAttachmentUrl=" + contractAttachmentUrl +
+                ", clientcid=" + clientcid +
+                ", sysusersysUserId=" + sysusersysUserId +
+                '}';
+    }
 }
