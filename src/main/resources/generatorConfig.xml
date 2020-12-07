@@ -37,21 +37,21 @@
         </javaClientGenerator>
 
         <!-- table表生成对应的DomainObject -->
-<!--        <table tableName="business" domainObjectName="Business"/>-->
-<!--        <table tableName="client" domainObjectName="Client"/>-->
-<!--        <table tableName="contract" domainObjectName="Contract"/>-->
-<!--        <table tableName="department" domainObjectName="DepartmentOne"/>-->
-<!--        <table tableName="enterprise" domainObjectName="Enterprise"/>-->
-<!--        <table tableName="message" domainObjectName="Message"/>-->
-<!--        <table tableName="product" domainObjectName="Product"/>-->
-<!--        <table tableName="role" domainObjectName="Role"/>-->
-<!--        <table tableName="sys_backend_api" domainObjectName="SysBackendApi"/>-->
-<!--        <table tableName="sys_frontend_menu" domainObjectName="SysFrontendMenu"/>-->
-<!--        <table tableName="sys_user" domainObjectName="SysUser"/>-->
-        <table tableName="sys_role_backend_api" domainObjectName="SysRoleBackendApi"/>
-        <table tableName="sys_role_frontend_menu" domainObjectName="SysRoleFrontendMenu"/>
-        <table tableName="sys_user_client" domainObjectName="SysUserClient"/>
-        <table tableName="sys_user_role" domainObjectName="SysUserRole"/>
+        <!--        <table tableName="business" domainObjectName="Business"/>-->
+        <!--        <table tableName="client" domainObjectName="Client"/>-->
+        <!--        <table tableName="contract" domainObjectName="Contract"/>-->
+        <!--        <table tableName="department" domainObjectName="DepartmentOne"/>-->
+        <!--        <table tableName="enterprise" domainObjectName="Enterprise"/>-->
+        <!--        <table tableName="message" domainObjectName="Message"/>-->
+        <!--        <table tableName="product" domainObjectName="Product"/>-->
+        <!--        <table tableName="role" domainObjectName="Role"/>-->
+        <!--        <table tableName="sys_backend_api" domainObjectName="SysBackendApi"/>-->
+        <table tableName="sys_frontend_menu" domainObjectName="SysFrontendMenu"/>
+        <!--        <table tableName="sys_user" domainObjectName="SysUser"/>-->
+        <!--        <table tableName="sys_role_backend_api" domainObjectName="SysRoleBackendApi"/>-->
+        <!--        <table tableName="sys_role_frontend_menu" domainObjectName="SysRoleFrontendMenu"/>-->
+        <!--        <table tableName="sys_user_client" domainObjectName="SysUserClient"/>-->
+        <!--        <table tableName="sys_user_role" domainObjectName="SysUserRole"/>-->
     </context>
 
 </generatorConfiguration>

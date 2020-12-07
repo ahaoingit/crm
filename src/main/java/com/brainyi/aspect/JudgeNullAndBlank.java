@@ -19,7 +19,5 @@ public class JudgeNullAndBlank {
 
     @Before("pointcut()")
     public void Before(JoinPoint joinPoint) {
-        System.out.println(joinPoint.getSignature().toString());
-        System.out.println("before");
     }
 }

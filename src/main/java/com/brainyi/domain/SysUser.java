@@ -20,7 +20,27 @@ public class SysUser {
 
     private Integer dId;
 
+    private Integer rId;
+
     private DepartmentOne departmentOne;
+
+    private Role  role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Integer getrId() {
+        return rId;
+    }
+
+    public void setrId(Integer rId) {
+        this.rId = rId;
+    }
 
     public DepartmentOne getDepartmentOne() {
         return departmentOne;

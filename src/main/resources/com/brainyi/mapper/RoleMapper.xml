@@ -161,4 +161,25 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
+<!-- 根据id 获取 role-->
+  <select id="selectRoleById" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List"/>
+    from role
+    where rid = #{rid}
+  </select>
+<!--一对多映射获取用户前端功能列表-->
+<!--  <resultMap id="roleAndFrontMenu" type="com.brainyi.domain.Role" extends="BaseResultMap">-->
+<!--      <collection property="sysFrontendMenus"-->
+<!--                  fetchType="eager"-->
+<!--                  column="{id=rid}"-->
+<!--                  select="com.brainyi.mapper.SysFrontendMenuMapper.selectFrontMenuById"/>-->
+<!--  </resultMap>-->
+<!--  <select id="selectRoleFrontMenuByRoleId" resultMap="roleAndFrontMenu">-->
+<!--    select-->
+<!--        <include refid="Base_Column_List"/>-->
+<!--    from role inner join sys_role_frontend_menu srfm on role.rid = srfm.rolerid-->
+<!--    where rid=#{rid}-->
+<!--  </select>-->
 </mapper>

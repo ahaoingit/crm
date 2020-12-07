@@ -1,56 +1,53 @@
 package com.brainyi.domain;
 
 public class SysFrontendMenu {
-    private String frontedMenuId;
+    private Integer id;
 
-    private String frontendMenuName;
+    private String title;
 
-    private String frontendMenuUrl;
+    private String href;
 
-    private String pid;
-
-    private Integer frontedMenuSort;
+    private String icon;
 
     private String description;
 
-    public String getFrontedMenuId() {
-        return frontedMenuId;
+    private Integer type;
+
+    private String pid;
+
+    private String opentype;
+
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setFrontedMenuId(String frontedMenuId) {
-        this.frontedMenuId = frontedMenuId == null ? null : frontedMenuId.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getFrontendMenuName() {
-        return frontendMenuName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setFrontendMenuName(String frontendMenuName) {
-        this.frontendMenuName = frontendMenuName == null ? null : frontendMenuName.trim();
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getFrontendMenuUrl() {
-        return frontendMenuUrl;
+    public String getHref() {
+        return href;
     }
 
-    public void setFrontendMenuUrl(String frontendMenuUrl) {
-        this.frontendMenuUrl = frontendMenuUrl == null ? null : frontendMenuUrl.trim();
+    public void setHref(String href) {
+        this.href = href;
     }
 
-    public String getPid() {
-        return pid;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
-    }
-
-    public Integer getFrontedMenuSort() {
-        return frontedMenuSort;
-    }
-
-    public void setFrontedMenuSort(Integer frontedMenuSort) {
-        this.frontedMenuSort = frontedMenuSort;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public String getDescription() {
@@ -58,6 +55,44 @@ public class SysFrontendMenu {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getOpentype() {
+        return opentype;
+    }
+
+    public void setOpentype(String opentype) {
+        this.opentype = opentype;
+    }
+
+    @Override
+    public String toString() {
+        return "SysFrontendMenu{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", href='" + href + '\'' +
+                ", icon='" + icon + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", pid='" + pid + '\'' +
+                ", opentype='" + opentype + '\'' +
+                '}';
     }
 }

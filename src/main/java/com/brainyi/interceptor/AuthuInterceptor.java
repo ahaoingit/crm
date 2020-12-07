@@ -40,6 +40,10 @@ public class AuthuInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
         String token = request.getHeader("Token");
+//        获取url中的token
+        if (token == null) {
+            token = request.getParameter("Token");
+        }
 //       登录请求放行 与 注册请求
         Result result = new Result();
 //        验证控制  前端调到登录界面

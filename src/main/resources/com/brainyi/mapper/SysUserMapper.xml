@@ -9,6 +9,7 @@
     <result column="join_time" jdbcType="DATE" property="joinTime" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="d_id" jdbcType="INTEGER" property="dId" />
+    <result column="rid" jdbcType="INTEGER" property="rId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    sys_user_id, sys_user_name, phone, email, join_time, password, d_id
+    sys_user_id, sys_user_name, phone, email, join_time, password, d_id, rid
   </sql>
   <select id="selectByExample" parameterType="com.brainyi.domain.SysUserExample" resultMap="BaseResultMap">
     select
@@ -94,10 +95,10 @@
   <insert id="insert" parameterType="com.brainyi.domain.SysUser">
     insert into sys_user (sys_user_id, sys_user_name, phone, 
       email, join_time, password, 
-      d_id)
+      d_id , rid)
     values (#{sysUserId,jdbcType=INTEGER}, #{sysUserName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{joinTime,jdbcType=DATE}, #{password,jdbcType=VARCHAR}, 
-      #{dId,jdbcType=INTEGER})
+      #{dId,jdbcType=INTEGER},#{rId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.brainyi.domain.SysUser">
     insert into sys_user
@@ -123,6 +124,9 @@
       <if test="dId != null">
         d_id,
       </if>
+      <if test="rId != null">
+       rid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="sysUserId != null">
@@ -145,6 +149,9 @@
       </if>
       <if test="dId != null">
         #{dId,jdbcType=INTEGER},
+      </if>
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.dId != null">
         d_id = #{record.dId,jdbcType=INTEGER},
       </if>
+      <if test="record.rId != null">
+        rid = #{record.rId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -191,7 +201,8 @@
       email = #{record.email,jdbcType=VARCHAR},
       join_time = #{record.joinTime,jdbcType=DATE},
       password = #{record.password,jdbcType=VARCHAR},
-      d_id = #{record.dId,jdbcType=INTEGER}
+      d_id = #{record.dId,jdbcType=INTEGER},
+      rid = #{record.rId,jdbcType=INTEGER},
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,7 +223,6 @@
       <result property="dName" column="d_name"></result>
       <result property="dRank" column="d_rank"></result>
       <result property="dParentId" column="d_parent_id"></result>
-
     </association>
   </resultMap>
 <!--  查询用户-->
@@ -242,7 +252,16 @@
       #{sysUserId}
     </foreach>
   </delete>
-
-
-
+  
+<!--一对一查询 用户角色-->
+  <resultMap id="selectSysUserRoles" type="com.brainyi.domain.SysUser" extends="BaseResultMap">
+    <association property="role" fetchType="lazy"
+        column="{rid = rid}" select="com.brainyi.mapper.RoleMapper.selectRoleById"></association>
+  </resultMap>
+  <select id="selectUserAndRoleById" resultMap="selectSysUserRoles">
+    select
+    <include refid="Base_Column_List"/>
+    from sys_user
+    where sys_user_id=#{id}
+  </select>
 </mapper>

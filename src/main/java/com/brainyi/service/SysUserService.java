@@ -1,20 +1,33 @@
 package com.brainyi.service;
 
 import com.brainyi.domain.*;
-import com.brainyi.mapper.SysUserMapper;
+import com.brainyi.mapper.*;
 
 import com.github.pagehelper.PageHelper;
 
+import jdk.nashorn.internal.runtime.linker.LinkerCallSite;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class SysUserService {
     @Autowired
     SysUserMapper sysUserMapper;
+    @Autowired
+    RoleMapper roleMapper;
+    @Autowired
+    SysFrontendMenuMapper sysFrontendMenuMapper;
+    @Autowired
+    ClientMapper clientMapper;
+    @Autowired
+    BusinessMapper businessMapper;
+    @Autowired
+    ContractMapper contractMapper;
+    @Autowired
+    ProductMapper productMapper;
 
     //分页展示用户
     public Result findSysUserForPage(Integer page, Integer pageSize) {
@@ -24,7 +37,7 @@ public class SysUserService {
         int count = sysUserMapper.selectAllSysUsers().size();
         pageReturnData.setCount(count);
         //开启分页
-        PageHelper.startPage(page,pageSize);
+        PageHelper.startPage(page, pageSize);
         //初始化分页数据 分页会对第一个select进行分页
         List<SysUser> sysUsers = sysUserMapper.selectAllSysUsers();
         pageReturnData.setData(sysUsers);
@@ -37,6 +50,7 @@ public class SysUserService {
 
     /**
      * 查询所有系统用户
+     *
      * @return
      */
     public Result selectAllSysUsers() {
@@ -44,13 +58,12 @@ public class SysUserService {
         PageReturnData<SysUser> pageReturnData = new PageReturnData<>();
         pageReturnData.setCode(Result.SUCCESS);
         pageReturnData.setData(sysUserMapper.selectAllSysUsers());
-        return  pageReturnData;
+        return pageReturnData;
     }
 
 
-
     //删除当前一行用户
-    public Result deleteSysUser(Integer sysUserId){
+    public Result deleteSysUser(Integer sysUserId) {
 
         sysUserMapper.deleteSysUser(sysUserId);
         Result result = new Result();
@@ -59,8 +72,8 @@ public class SysUserService {
         return result;
     }
 
-//    增加新用户
-    public Result addSysUser(SysUser sysUser){
+    //    增加新用户
+    public Result addSysUser(SysUser sysUser) {
         sysUserMapper.addSysUser(sysUser);
         Result result = new Result();
         result.setCode(Result.SUCCESS);
@@ -69,7 +82,7 @@ public class SysUserService {
     }
 
     //    修改员工信息
-    public Result updateByExampleSelective(SysUser sysUser){
+    public Result updateByExampleSelective(SysUser sysUser) {
         SysUserExample sysUserExample = new SysUserExample();
         SysUserExample.Criteria criteria = sysUserExample.createCriteria();
         criteria.andSysUserIdEqualTo(sysUser.getSysUserId());
@@ -78,7 +91,7 @@ public class SysUserService {
         sysUser.setPhone(sysUser.getPhone());
         sysUser.setPassword(sysUser.getPassword());
         sysUser.setdId(sysUser.getdId());
-        sysUserMapper.updateByExampleSelective(sysUser,sysUserExample);
+        sysUserMapper.updateByExampleSelective(sysUser, sysUserExample);
         Result result = new Result();
         result.setCode(Result.SUCCESS);
         result.setMessage("修改员工成功");
@@ -86,8 +99,8 @@ public class SysUserService {
         return result;
     }
 
-//    批量删除
-    public Result deleteAll(List<Integer> sysUserId){
+    //    批量删除
+    public Result deleteAll(List<Integer> sysUserId) {
         SysUserExample sysUserExample = new SysUserExample();
         SysUserExample.Criteria criteria = sysUserExample.createCriteria();
         criteria.andSysUserIdIn(sysUserId);
@@ -115,7 +128,7 @@ public class SysUserService {
             result.setCode(Result.SUCCESS);
             result.setMessage("login success");
             result.setObj(sysUsers.get(0));
-        }else {
+        } else {
             result.setCode(Result.FAILS);
             result.setMessage("手机号或者密码错误");
         }
@@ -124,6 +137,7 @@ public class SysUserService {
 
     /**
      * 手机号验证
+     *
      * @param sysUserPhone
      * @return
      */
@@ -132,8 +146,32 @@ public class SysUserService {
         return sysUserPhone.matches(match);
 
     }
+
     @Test
     public void test() {
         System.out.println(checkPhone("18796388873"));
+    }
+
+    public Result selectDataForInitIndexPage(String sysUserId) {
+        Result result = new Result();
+        Map<String,Object> returnObj = new HashMap<>();
+        SysUser sysUser = sysUserMapper.selectUserAndRoleById(sysUserId);
+        List<SysFrontendMenu> sysFrontendMenus = sysFrontendMenuMapper.selectFrontMenuById(sysUser.getRole().getRid().toString());
+        returnObj.put("menus",sysFrontendMenus);
+        returnObj.put("clientOfPrivateNum",clientMapper.selectAllClientOfPublic().size());
+        returnObj.put("businessNum",businessMapper.selectByExample(new BusinessExample()).size());
+        returnObj.put("contractNum",contractMapper.selectAllContract().size());
+        returnObj.put("productNum",productMapper.selectAllProducts().size());
+        result.setObj(returnObj);
+        result.setCode(Result.SUCCESS);
+        result.setMessage("init seccess");
+        return result;
+    }
+
+    public List<SysFrontendMenu> getMenu(String sysUserId) {
+        SysUser sysUser = sysUserMapper.selectUserAndRoleById(sysUserId);
+        List<SysFrontendMenu> sysFrontendMenus = sysFrontendMenuMapper.selectFrontMenuById(sysUser.getRole().getRid().toString());
+        sysFrontendMenus.sort(Comparator.comparingInt(SysFrontendMenu::getId));
+        return sysFrontendMenus;
     }
 }
