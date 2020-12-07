@@ -30,7 +30,12 @@ public interface SysUserMapper {
 //    增加新用户
     Integer addSysUser(SysUser sysUser);
 
-
+    /**
+     * 获取用户信息 与 角色
+     * @param sysUserId
+     * @return
+     */
+    SysUser selectUserAndRoleById(@Param("id") String sysUserId);
 
 
 }

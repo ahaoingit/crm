@@ -43,7 +43,6 @@ public class DepartmentOneController {
     //删除当前部门
     @RequestMapping(value = "/deleteCurrDepartment")
     public String deleteCurrDepartment(Integer did){
-        System.out.println(did);
         return JSON.toJSONString(departmentOneService.deleteByExample(did));
 
     }

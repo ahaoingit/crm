@@ -5,7 +5,7 @@ public class SysRoleFrontendMenu {
 
     private Integer rolerid;
 
-    private String frontedMenuId;
+    private Integer frontedMenuId;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class SysRoleFrontendMenu {
         this.rolerid = rolerid;
     }
 
-    public String getFrontedMenuId() {
+    public Integer getFrontedMenuId() {
         return frontedMenuId;
     }
 
-    public void setFrontedMenuId(String frontedMenuId) {
-        this.frontedMenuId = frontedMenuId == null ? null : frontedMenuId.trim();
+    public void setFrontedMenuId(Integer frontedMenuId) {
+        this.frontedMenuId = frontedMenuId;
     }
 }

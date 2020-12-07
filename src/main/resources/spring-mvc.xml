@@ -30,7 +30,7 @@
 <!--拦截器配置-->
     <mvc:interceptors>
         <!--    拦截处理请求头 实现跨域-->
-<!--        <bean class="com.brainyi.interceptor.AuthuInterceptor"/>-->
         <bean class="com.brainyi.interceptor.CrossInterceptor" />
+        <bean class="com.brainyi.interceptor.AuthuInterceptor"/>
     </mvc:interceptors>
 </beans>

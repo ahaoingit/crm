@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.brainyi.domain.SysRoleFrontendMenu">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="rolerid" jdbcType="INTEGER" property="rolerid" />
-    <result column="fronted_menu_id" jdbcType="VARCHAR" property="frontedMenuId" />
+    <result column="fronted_menu_id" jdbcType="INTEGER" property="frontedMenuId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -90,7 +90,7 @@
   <insert id="insert" parameterType="com.brainyi.domain.SysRoleFrontendMenu">
     insert into sys_role_frontend_menu (id, rolerid, fronted_menu_id
       )
-    values (#{id,jdbcType=INTEGER}, #{rolerid,jdbcType=INTEGER}, #{frontedMenuId,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{rolerid,jdbcType=INTEGER}, #{frontedMenuId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.brainyi.domain.SysRoleFrontendMenu">
@@ -114,7 +114,7 @@
         #{rolerid,jdbcType=INTEGER},
       </if>
       <if test="frontedMenuId != null">
-        #{frontedMenuId,jdbcType=VARCHAR},
+        #{frontedMenuId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -134,7 +134,7 @@
         rolerid = #{record.rolerid,jdbcType=INTEGER},
       </if>
       <if test="record.frontedMenuId != null">
-        fronted_menu_id = #{record.frontedMenuId,jdbcType=VARCHAR},
+        fronted_menu_id = #{record.frontedMenuId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -145,7 +145,7 @@
     update sys_role_frontend_menu
     set id = #{record.id,jdbcType=INTEGER},
       rolerid = #{record.rolerid,jdbcType=INTEGER},
-      fronted_menu_id = #{record.frontedMenuId,jdbcType=VARCHAR}
+      fronted_menu_id = #{record.frontedMenuId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

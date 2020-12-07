@@ -19,4 +19,12 @@ public interface SysFrontendMenuMapper {
     int updateByExampleSelective(@Param("record") SysFrontendMenu record, @Param("example") SysFrontendMenuExample example);
 
     int updateByExample(@Param("record") SysFrontendMenu record, @Param("example") SysFrontendMenuExample example);
+
+    /**
+     * 根据id 获取 前端功能列表
+     * @param id
+     * @return
+     */
+    List<SysFrontendMenu> selectFrontMenuById(@Param("id") String id);
+
 }

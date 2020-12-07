@@ -19,4 +19,18 @@ public interface RoleMapper {
     int updateByExampleSelective(@Param("record") Role record, @Param("example") RoleExample example);
 
     int updateByExample(@Param("record") Role record, @Param("example") RoleExample example);
+
+    /**
+     * 根据角色id 获取角色信息
+     * @param rid
+     * @return
+     */
+    Role selectRoleById(@Param("rid") String rid);
+
+    /**
+     * 获取 角色前端功能列表
+     * @param rid
+     * @return
+     */
+//    Role selectRoleFrontMenuByRoleId(@Param("rid") String rid);
 }

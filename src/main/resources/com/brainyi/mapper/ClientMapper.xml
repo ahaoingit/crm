@@ -101,14 +101,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+<!--  更改 开启自增主键回显-->
   <insert id="insert" parameterType="com.brainyi.domain.Client">
-    insert into client (cid, cname, contacts_name, 
+    insert into client (cname, contacts_name,
       phone, position, industry, 
       wechat_name, email, c_notes, 
       c_source, tel, website, 
       province, city, area, 
       address)
-    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{contactsName,jdbcType=VARCHAR}, 
+    values (#{cname,jdbcType=VARCHAR}, #{contactsName,jdbcType=VARCHAR},
       #{phone,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
       #{wechatName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{cNotes,jdbcType=VARCHAR}, 
       #{cSource,jdbcType=TINYINT}, #{tel,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, 

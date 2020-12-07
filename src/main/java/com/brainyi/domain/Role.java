@@ -1,6 +1,7 @@
 package com.brainyi.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Role {
     private Integer rid;
@@ -10,6 +11,26 @@ public class Role {
     private String remarks;
 
     private Date rCreateTime;
+
+    private List<SysFrontendMenu> sysFrontendMenus;
+
+    private List<SysBackendApi> sysBackendApis;
+
+    public List<SysBackendApi> getSysBackendApis() {
+        return sysBackendApis;
+    }
+
+    public void setSysBackendApis(List<SysBackendApi> sysBackendApis) {
+        this.sysBackendApis = sysBackendApis;
+    }
+
+    public List<SysFrontendMenu> getSysFrontendMenus() {
+        return sysFrontendMenus;
+    }
+
+    public void setSysFrontendMenus(List<SysFrontendMenu> sysFrontendMenus) {
+        this.sysFrontendMenus = sysFrontendMenus;
+    }
 
     public Integer getRid() {
         return rid;

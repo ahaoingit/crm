@@ -37,4 +37,5 @@ public class SysUserClientController {
         String sysUserId = JWTUtils.getClaimVal("sysUserId", token);
         return sysUserClientservice.deleteClientOfPrivate(sysUserClients,sysUserId);
     }
+
 }
