@@ -26,6 +26,7 @@ public class DepartmentOneService {
         PageReturnData<DepartmentOne> pageReturnData = new PageReturnData<>();
         pageReturnData.setCode(Result.SUCCESS);
         pageReturnData.setData(departmentOneMapper.selectAllDepartmentOne());
+
         return  pageReturnData;
     }
 

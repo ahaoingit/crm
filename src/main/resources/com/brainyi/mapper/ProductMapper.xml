@@ -196,7 +196,7 @@
 
 <!-- 一对一查询-->
   <select id="selectAllProducts" resultMap="productSysUserMap">
-      select p.pid, p.pname,p.p_create_time,s.sys_user_name
+      select p.pid, p.pname,p.p_create_time,s.sys_user_name,s.sys_user_id
       from product p,sys_user s
       where p.p_create_person = s.sys_user_id
   </select>

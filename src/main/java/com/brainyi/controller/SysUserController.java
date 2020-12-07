@@ -82,7 +82,7 @@ public class SysUserController {
 
     }
 
-    //产品分页
+    //用户分页
     @RequestMapping("/findSysUserForPage")
     public String findSysUserForPage(@RequestParam("page") Integer page , @RequestParam("limit") Integer pageSize) {
         return JSON.toJSONString(sysUserService.findSysUserForPage(page, pageSize));
@@ -95,6 +95,7 @@ public class SysUserController {
 
     @RequestMapping("/login")
     public Result login(@RequestParam("phone") String sysUserPhone, @RequestParam("pwd") String sysUserPassword, HttpServletResponse response) {
+        System.out.println(sysUserPassword);
         Result result = sysUserService.findUserForLogin(sysUserPhone, sysUserPassword);
         if (result.getCode() == 1) {
             Map<String, String> claim = new HashMap<>(3);

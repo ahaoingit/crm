@@ -318,6 +318,7 @@
     select
     <include refid="Base_Column_List"/>
     from client  WHERE
+    cid in
     (SELECT client_cid FROM sys_user_client WHERE sys_user_id = #{userId} and client.cid = sys_user_client.client_cid)
   </select>
 </mapper>
