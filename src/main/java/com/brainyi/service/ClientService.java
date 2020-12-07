@@ -100,4 +100,21 @@ public class ClientService {
         return pageReturnData;
     }
 
+//    私海分页
+public Result findClientOfPrivateForPage(Integer page, Integer pageSize,String sysUserId) {
+
+    PageReturnData<Client> pageReturnData = new PageReturnData<>();
+    int count = clientMapper.selectClientBySysUserId(sysUserId).size();
+    pageReturnData.setCount(count);
+    //开启分页
+    PageHelper.startPage(page,pageSize);
+    //初始化分页数据 分页会对第一个select进行分页
+    List<Client> clients = clientMapper.selectClientBySysUserId(sysUserId);
+    pageReturnData.setData(clients);
+    //初始化信息与标志
+    pageReturnData.setCode(Result.SUCCESS);
+    pageReturnData.setMessage("查询分页成功");
+    return pageReturnData;
+}
+
 }

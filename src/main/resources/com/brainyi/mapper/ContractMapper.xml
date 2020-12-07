@@ -242,6 +242,20 @@
     <result property="client.cname" column="cname"/>
     <result property="client.contactsName" column="contacts_name"/>
     <result property="sysUserId" column="sys_user_id"/>
+
+    <association property="client" javaType="com.brainyi.domain.Client">
+      <id property="cid" column="cid"></id>
+      <result property="cname" column="cname"></result>
+      <result property="contactsName" column="contacts_name"></result>
+
+    </association>
+
+    <association property="sysUser" javaType="com.brainyi.domain.SysUser">
+      <id property="sysUserId" column="sys_user_id"></id>
+      <result property="sysUserName" column="sys_user_name"></result>
+
+    </association>
+
   </resultMap>
 <select id="selectAllContract" resultMap="contractClientMap">
 select co.contract_id,cl.cname,cl.contacts_name,co.contract_date,co.invoicing_flag,sy.sys_user_name,co.notes from contract co inner join client cl on co.clientcid=cl.cid inner join sys_user sy on co.sysusersys_user_id=sy.sys_user_id

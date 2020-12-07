@@ -220,6 +220,7 @@
     select s.sys_user_id,s.sys_user_name,s.phone,s.email,s.join_time,s.password,d.d_name,d.did
     from sys_user s, department d
     where s.d_id = d.did
+    order by sys_user_id
   </select>
 
 <!--  删除当前行用户-->
